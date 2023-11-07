@@ -1,11 +1,22 @@
-import {createStore} from "redux";
-import reducer from "../reducers";
+import {configureStore} from "@reduxjs/toolkit";
+import contadorReducer from '../reducers/contadorReducer';
+import { pokemonSlice } from '../reducers/apiSlice';
+import createSagaMiddleware from 'redux-saga';
+import watchGetPokemons from '../reducers/saga/saga';
+import rootSaga from '../reducers/saga';
 
-const store = createStore(
-	reducer,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const sagaMiddleware = createSagaMiddleware();
 
-store.subscribe(() => console.log(store));
+const store = configureStore({
+	reducer: {
+		contador: contadorReducer,
+		pokemons: pokemonSlice.reducer,
+	},
+	middleware: [sagaMiddleware]
+})
+
+// Ejectuar saga
+sagaMiddleware.run(rootSaga)
+
 
 export default store;

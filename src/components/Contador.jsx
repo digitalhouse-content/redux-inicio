@@ -3,7 +3,8 @@ import { reset, restar, restar5, sumar, sumar5 } from '../actions/contadorAction
 
 const Contador = () => {
 	// Como acceder al estado de Redux que viene del provider
-	const state = useSelector((state) => state);
+	const state = useSelector((state) => state.contador.contador); 
+
 
 	// Como despacha acciones
 	const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const Contador = () => {
 	return (
 		<div>
 			<h2>Contador</h2>
-			<p>{state.contador}</p>
+			<p>{state}</p>
 			<nav>
 				<button onClick={() => dispatch(sumar5())}>+5</button>
 				<button onClick={() => dispatch(sumar())}>+1</button>

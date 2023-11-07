@@ -3,6 +3,7 @@ import "./App.css";
 import Contador from "./components/Contador";
 import ShoppingCart from './components/ShoppingCart';
 import store from "./store";
+import { Pokemons } from './components/Pokemons';
 
 function App() {
 	return (
@@ -11,7 +12,8 @@ function App() {
 				<header className="App-header">
 					{/* <h1>React + Redux</h1> */}
 					{/* <Contador /> */}
-					<ShoppingCart />
+					{/* <ShoppingCart /> */}
+					<Pokemons />
 				</header>
 			</div>
 		</Provider>
@@ -19,3 +21,5 @@ function App() {
 }
 
 export default App;
+
+
